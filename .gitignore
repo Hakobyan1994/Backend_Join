@@ -1,0 +1,34 @@
+# __pycache__-Ordner (kompilierte Python-Dateien)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtuelle Umgebungen
+env/
+venv/
+ENV/
+.venv/
+
+# Umgebungsvariablen / Secrets
+.env
+*.env
+
+# SQLite-Datenbank (optional)
+db.sqlite3
+
+# Log-Dateien
+*.log
+
+# IDE/Editor-Dateien
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Bytecode-Dateien
+*.pyc
+*.pyo
+
+# Migrations (nur __init__.py behalten)
+**/migrations/*.py
+!**/migrations/__init__.py
