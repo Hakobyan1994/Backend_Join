@@ -15,7 +15,7 @@ def check_email(request):
     exists = User.objects.filter(email=email).exists()
     return JsonResponse({'exists': exists})       
 
-
+#Create Registration
 class RegistrationView(APIView):
    permission_classes=[AllowAny] 
 
@@ -39,6 +39,7 @@ class RegistrationView(APIView):
 # class CustomLoginView(ObtainAuthToken):
 #    permission_classes=[AllowAny]
 
+#Create Login
 class CustomLoginView(APIView):
     permission_classes = [AllowAny]
 

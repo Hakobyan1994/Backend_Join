@@ -1,12 +1,12 @@
 from django.db import models
 
-# Create your models here.
+# Createcontacts Model
 class CreateContacts(models.Model):
      name = models.CharField(max_length=100, blank=False, null=False)
      email = models.EmailField(blank=False, null=False, unique=True)
      phone = models.CharField(max_length=20, blank=False, null=False)
 
-
+# Createtasks Model
 class CreateTasks(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(max_length=1000,blank=True)    

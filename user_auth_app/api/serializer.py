@@ -2,7 +2,10 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
+
+#Create registrationserializer
 class RegistrationSerializer(serializers.ModelSerializer):
+     username = serializers.CharField(validators=[], max_length=150)
      repeated_password=serializers.CharField(write_only=True)
      privacy_policy = serializers.BooleanField(write_only=True)
      class Meta:
@@ -12,7 +15,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
             'password': {'write_only': True},
         }
          
-
+    #Validating username
+     def validate_username(self, value):
+        if not value.strip():
+            raise serializers.ValidationError("Username cannot be empty or only spaces.")
+        return value    
+     #creating function for saving user 
      def save(self):
           pw=self.validated_data['password']
           repeated_password=self.validated_data['repeated_password']         
@@ -23,7 +31,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
           elif pw!=repeated_password:
               raise serializers.ValidationError({'error:''password not corect'})
           account=User(email=self.validated_data['email'],username=self.validated_data['username'])
-          #set_password(pw) ist wichtig: Dadurch wird das Passwort verschlüsselt gespeichert (nicht im Klartext!).
+          #set_password(pw) is important: This ensures that the password is stored encrypted (not in plain text!).
           account.set_password(pw)
           account.save()
           return account 
