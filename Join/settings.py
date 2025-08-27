@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
+# .env laden
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +32,17 @@ SECRET_KEY = 'django-insecure-nq&qa5gw3%d65gahgbv=6@vf9hb3bb$jmow0$1&8my*ze3$ct6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "join-app-9763db12bf26.herokuapp.com",
+    "localhost",
+    "127.0.0.1",
+    '.herokuapp.com',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://join-app-9763db12bf26.herokuapp.com/",
+    "https://*.herokuapp.com",
+]
 
 
 # Application definition
@@ -58,12 +75,6 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:4200',  # z. B. dein Angular/Vue/React-Frontend
-#     'https://dein-frontend.de',
-# ]
-
-
 ROOT_URLCONF = 'Join.urls'
 
 TEMPLATES = [
@@ -87,12 +98,30 @@ WSGI_APPLICATION = 'Join.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT", "5432"),
     }
 }
+
+
+
+
+
+
 
 
 # Password validation
