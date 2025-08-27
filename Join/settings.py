@@ -44,7 +44,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -116,12 +115,6 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT", "5432"),
     }
 }
-
-
-
-
-
-
 
 
 # Password validation
