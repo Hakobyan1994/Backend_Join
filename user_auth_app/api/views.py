@@ -63,5 +63,3 @@ class CustomLoginView(APIView):
             })
         else:
             return Response({"error": "Invalid credentials"}, status=400)
-       
-
