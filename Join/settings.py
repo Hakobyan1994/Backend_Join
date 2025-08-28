@@ -30,15 +30,13 @@ SECRET_KEY = 'django-insecure-nq&qa5gw3%d65gahgbv=6@vf9hb3bb$jmow0$1&8my*ze3$ct6
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "join-app-9763db12bf26.herokuapp.com",
+    "api.my-join-app.com",
     "localhost",
     "127.0.0.1",
-    '.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://join-app-9763db12bf26.herokuapp.com/",
-    "https://*.herokuapp.com",
+    "http://api.my-join-app.com",
 ]
 
 # Application definition
