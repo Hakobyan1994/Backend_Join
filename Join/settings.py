@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://api.my-join-app.com",
+    "https://api.my-join-app.com",
 ]
 
 # Application definition
